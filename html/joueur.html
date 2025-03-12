@@ -55,27 +55,56 @@
     </script>
     <div id="button-container">
       <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-      <button id="mooveRoom">Ouvrir la caméra</button>
+      <button id="mooveRoom">Scanner un QR Code</button>
+      <video id="video" style="display: none;" autoplay></video>
+      <canvas id="canvas" style="display: none;"></canvas>
+      <p id="result"></p>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jsQR/1.4.0/jsQR.min.js"></script>
       <script>
           const button = document.querySelector("#mooveRoom");
+          const video = document.querySelector("#video");
+          const canvas = document.querySelector("#canvas");
+          const result = document.querySelector("#result");
+          const ctx = canvas.getContext("2d");
 
-          button.addEventListener("click", () => {
-              let cameraInput = document.createElement("input");
-              cameraInput.type = "file";
-              cameraInput.accept = "image/*";
-              cameraInput.capture = "environment"; // Utilise la caméra arrière
-              cameraInput.style.display = "none"; // Cache l'input
+          button.addEventListener("click", async () => {
+              try {
+                  // Accès à la caméra arrière
+                  const stream = await navigator.mediaDevices.getUserMedia({
+                      video: { facingMode: "environment" }
+                  });
 
-              document.body.appendChild(cameraInput);
-              cameraInput.click(); // Déclenche l'ouverture de la caméra
+                  video.srcObject = stream;
+                  video.style.display = "block";
 
-              cameraInput.onchange = function (event) {
-                  let file = event.target.files[0];
-                  if (file) {
-                      console.log("Photo capturée :", file);
-                  }
-              };
+                  scanQRCode();
+              } catch (error) {
+                  console.error("Erreur d'accès à la caméra :", error);
+              }
           });
+
+          function scanQRCode() {
+              const interval = setInterval(() => {
+                  if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                      canvas.width = video.videoWidth;
+                      canvas.height = video.videoHeight;
+                      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                      const qrCode = jsQR(imageData.data, imageData.width, imageData.height);
+
+                      if (qrCode) {
+                          result.textContent = "QR Code détecté : " + qrCode.data;
+                          clearInterval(interval);
+                          video.srcObject.getTracks().forEach(track => track.stop()); // Stop la caméra
+                          video.style.display = "none";
+                      }
+                  }
+              }, 500); // Vérifie toutes les 500ms
+          }
+      </script>
+
       </script>
 
     </div>
