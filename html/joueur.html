@@ -35,18 +35,23 @@
         document.getElementById("texte").textContent = "Enquêteur";
       }
 
-      let bouton = document.getElementById("toggleButton");
-      let texte = document.getElementById("texte");
 
-      bouton.addEventListener("click", function () {
-        if (texte.style.display === "none" || texte.style.display === "") {
-          texte.style.display = "block";
-          bouton.textContent = "Cacher votre rôle";
-        } else {
-          texte.style.display = "none";
-          bouton.textContent = "Afficher votre rôle";
-        }
-      });
+      
+        let bouton = document.getElementById("toggleButton");
+        let texte = document.getElementById("texte");
+
+        bouton.addEventListener("click", function () {
+          if (texte.style.display === "none" || texte.style.display === "") {
+            texte.style.display = "block";
+            bouton.textContent = "Cacher votre rôle";
+          } else {
+            texte.style.display = "none";
+            bouton.textContent = "Afficher votre rôle";
+          }
+        });
+      
+
+   
     </script>
     <div id="button-container">
       <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
