@@ -3,4 +3,4 @@ const idRoom = Room.id
 console.log("Before Local Storage")
 localStorage.setItem("nbRoom", idRoom)
 console.log("After Local Storage")
-window.location.replace("html/yourClue.html");
+window.location.replace("MindTraptrap/html/yourClue.html");
