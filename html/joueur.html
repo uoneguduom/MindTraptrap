@@ -20,7 +20,6 @@
         "https://uoneguduom.github.io/MindTraptrap/html/complice.txt"
       );
       const complice = await res.text();
-      console.log(complice);
 
       const playerNb = localStorage.getItem("playerNb");
 
@@ -36,19 +35,17 @@
         document.getElementById("texte").textContent = "Enquêteur";
       }
 
-      document.addEventListener("DOMContentLoaded", function () {
-        let bouton = document.getElementById("toggleButton");
-        let texte = document.getElementById("texte");
+      let bouton = document.getElementById("toggleButton");
+      let texte = document.getElementById("texte");
 
-        bouton.addEventListener("click", function () {
-          if (texte.style.display === "none" || texte.style.display === "") {
-            texte.style.display = "block";
-            bouton.textContent = "Cacher votre rôle";
-          } else {
-            texte.style.display = "none";
-            bouton.textContent = "Afficher votre rôle";
-          }
-        });
+      bouton.addEventListener("click", function () {
+        if (texte.style.display === "none" || texte.style.display === "") {
+          texte.style.display = "block";
+          bouton.textContent = "Cacher votre rôle";
+        } else {
+          texte.style.display = "none";
+          bouton.textContent = "Afficher votre rôle";
+        }
       });
     </script>
     <div id="button-container">
