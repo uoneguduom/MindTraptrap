@@ -1,5 +1,6 @@
 const Room = document.querySelector("div")
 const idRoom = Room.id
+console.log("Before Local Storage")
 localStorage.setItem("nbRoom", idRoom)
-window.location.replace("/html/yourClue.html");
-
+console.log("After Local Storage")
+window.location.replace("MindTraptrap/html/yourClue.html");
