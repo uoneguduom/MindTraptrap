@@ -55,7 +55,29 @@
     </script>
     <div id="button-container">
       <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-      <button>Changer de pièce</button>
+      <button id="mooveRoom">Ouvrir la caméra</button>
+      <script>
+          const button = document.querySelector("#mooveRoom");
+
+          button.addEventListener("click", () => {
+              let cameraInput = document.createElement("input");
+              cameraInput.type = "file";
+              cameraInput.accept = "image/*";
+              cameraInput.capture = "environment"; // Utilise la caméra arrière
+              cameraInput.style.display = "none"; // Cache l'input
+
+              document.body.appendChild(cameraInput);
+              cameraInput.click(); // Déclenche l'ouverture de la caméra
+
+              cameraInput.onchange = function (event) {
+                  let file = event.target.files[0];
+                  if (file) {
+                      console.log("Photo capturée :", file);
+                  }
+              };
+          });
+      </script>
+
     </div>
   </body>
 </html>
