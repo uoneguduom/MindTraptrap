@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Afficher / Cacher votre rôle</title>
+</head>
+<body>
+    <h1> Joueur 2</h1>
+    <button id="toggleButton">Afficher votre rôle</button>
+    <div id="texte">Complice</div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        let bouton = document.getElementById("toggleButton");
+        let texte = document.getElementById("texte");
+
+        bouton.addEventListener("click", function () {
+            if (texte.style.display === "none" || texte.style.display === "") {
+                texte.style.display = "block";
+                bouton.textContent = "Cacher votre rôle";
+            } else {
+                texte.style.display = "none";
+                bouton.textContent = "Afficher votre rôle";
+            }
+        });
+        });
+    </script>
+    <div id="button-container">
+        <button>Revenir en arrière</button>
+        <button>Changer de pièce</button>
+    </div>
+         
+</body>
+</html>
