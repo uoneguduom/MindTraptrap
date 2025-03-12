@@ -17,5 +17,3 @@ const choiceMade = () => {
     element.remove();
   });
 };
-
-
