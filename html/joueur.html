@@ -1,54 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css" />
     <title>Afficher / Cacher votre rôle</title>
-</head>
-<body>
-    <h1 id="player-title"> Joueur </h1>
+  </head>
+  <body>
+    <h1 id="player-title">Joueur</h1>
     <button id="toggleButton">Afficher votre rôle</button>
     <div id="texte"></div>
     <style>
-        #texte{
-            display: none;
-        }
+      #texte {
+        display: none;
+      }
     </style>
-    <script>
+    <script type="module">
+      const res = await fetch(
+        "https://uoneguduom.github.io/MindTraptrap/html/complice.txt"
+      );
+      const complice = await res.text();
+      console.log(complice);
 
-        const playerNb = localStorage.getItem("playerNb");
+      const playerNb = localStorage.getItem("playerNb");
 
-        if (playerNb) {
-            document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
-        } 
+      if (playerNb) {
+        document.getElementById(
+          "player-title"
+        ).textContent = `Joueur ${playerNb}`;
+      }
 
-        if (playerNb==2) {
-                document.getElementById("texte").textContent = "Complice";
-            } else {
-                document.getElementById("texte").textContent = "Enquêteur";
-            }
-        
+      if (playerNb == 2) {
+        document.getElementById("texte").textContent = "Complice";
+      } else {
+        document.getElementById("texte").textContent = "Enquêteur";
+      }
 
-        document.addEventListener("DOMContentLoaded", function () {
+      document.addEventListener("DOMContentLoaded", function () {
         let bouton = document.getElementById("toggleButton");
         let texte = document.getElementById("texte");
 
         bouton.addEventListener("click", function () {
-            if (texte.style.display === "none" || texte.style.display === "") {
-                texte.style.display = "block";
-                bouton.textContent = "Cacher votre rôle";
-            } else {
-                texte.style.display = "none";
-                bouton.textContent = "Afficher votre rôle";
-            }
+          if (texte.style.display === "none" || texte.style.display === "") {
+            texte.style.display = "block";
+            bouton.textContent = "Cacher votre rôle";
+          } else {
+            texte.style.display = "none";
+            bouton.textContent = "Afficher votre rôle";
+          }
         });
-        });
+      });
     </script>
     <div id="button-container">
-        <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-        <button>Changer de pièce</button>
+      <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
+      <button>Changer de pièce</button>
     </div>
-         
-</body>
+  </body>
 </html>
