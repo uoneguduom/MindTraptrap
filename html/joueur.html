@@ -10,6 +10,11 @@
     <h1 id="player-title"> Joueur </h1>
     <button id="toggleButton">Afficher votre rôle</button>
     <div id="texte"></div>
+    <style>
+        #texte{
+            display: none;
+        }
+    </style>
     <script>
 
         const playerNb = localStorage.getItem("playerNb");
@@ -18,13 +23,12 @@
             document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
         } 
 
-        if (playerNb) {
-            if (playerNb==2) {
+        if (playerNb==2) {
                 document.getElementById("texte").textContent = "Complice";
             } else {
                 document.getElementById("texte").textContent = "Enquêteur";
             }
-        }
+        
 
         document.addEventListener("DOMContentLoaded", function () {
         let bouton = document.getElementById("toggleButton");
@@ -42,7 +46,7 @@
         });
     </script>
     <div id="button-container">
-        <button>Revenir en arrière</button>
+        <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
         <button>Changer de pièce</button>
     </div>
          
