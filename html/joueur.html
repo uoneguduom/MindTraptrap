@@ -30,7 +30,7 @@
         ).textContent = `Joueur ${playerNb}`;
       }
 
-      if (playerNb == 2) {
+      if (+playerNb === +complice) {
         document.getElementById("texte").textContent = "Complice";
       } else {
         document.getElementById("texte").textContent = "Enquêteur";
