@@ -19,8 +19,11 @@ body {
 
 
 .title {
+    font-family: "Grenze", serif;
+    font-weight: 100;
+    font-style: normal;
     font-size: 40px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-transform: uppercase;
     letter-spacing: 2px;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
@@ -29,7 +32,10 @@ body {
 
 
 .tier2-title {
-    font-size: 20px;
+    font-family: "Montserrat Alternates", sans-serif;
+    /* font-weight: 100; */
+    font-style: normal;
+    font-size: 25px;
     margin-bottom: 20px;
     text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
@@ -46,7 +52,7 @@ body {
     background-color: #333;
     color: #f0f0f0;
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
@@ -54,6 +60,14 @@ body {
     width: 200px;
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+.indice {
+    width: 90vw;
+    padding: 30px;
+    display: inline-block;
+    /* text-align: justify; */
+    height: min-content;
 }
 
 
@@ -81,10 +95,13 @@ body {
 }
 
 button {
+    font-family: "Montserrat Alternates", sans-serif;
+    /* font-weight: 100; */
+    font-style: normal;
     background-color: #333;
     color: #f0f0f0;
     font-size: 14px;
-    font-weight: bold;
+    /* font-weight: bold; */
     padding: 12px 20px;
     border: none;
     border-radius: 8px;
@@ -111,6 +128,9 @@ button:hover {
     letter-spacing: 1px;
 }
 
+#button_room{
+    margin-top: 30px;
+}
 
 @media (max-width: 768px) {
     .button {
