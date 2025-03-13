@@ -1,69 +1,72 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/style.css" />
-    <title>Afficher / Cacher votre rôle</title>
-  </head>
-  <body>
-    <h1 id="player-title">Joueur</h1>
-    <button id="toggleButton">Afficher votre rôle</button>
-    <div id="texte"></div>
-    <style>
-      #texte {
-        display: none;
-      }
-      #video {
-        width: 300px;
-        height: 200px;
-        border: 2px solid black;
-        visibility: hidden ;
-      }
-    </style>
-    <script type="module">
-      const res = await fetch("https://uoneguduom.github.io/MindTraptrap/html/complice.txt");
-      const complice = await res.text();
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <title>Afficher / Cacher votre rôle</title>
+</head>
+<body>
+  <h1 id="player-title">Joueur</h1>
+  <button id="toggleButton">Afficher votre rôle</button>
+  <div id="texte"></div>
+  <style>
+    #texte { display: none; }
+    #video {
+      width: 300px;
+      height: 200px;
+      border: 2px solid black;
+      display: none; /* Caché par défaut */
+    }
+  </style>
 
-      const playerNb = localStorage.getItem("playerNb");
+  <script type="module">
+    const res = await fetch("https://uoneguduom.github.io/MindTraptrap/html/complice.txt");
+    const complice = await res.text();
 
-      if (playerNb) {
-        document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
-      }
+    const playerNb = localStorage.getItem("playerNb");
 
-      document.getElementById("texte").textContent = (+playerNb === +complice) ? "Complice" : "Enquêteur";
+    if (playerNb) {
+      document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
+    }
 
-      let bouton = document.getElementById("toggleButton");
-      let texte = document.getElementById("texte");
+    document.getElementById("texte").textContent = (+playerNb === +complice) ? "Complice" : "Enquêteur";
 
-      bouton.addEventListener("click", function () {
-        texte.style.display = (texte.style.display === "none" || texte.style.display === "") ? "block" : "none";
-        bouton.textContent = (texte.style.display === "block") ? "Cacher votre rôle" : "Afficher votre rôle";
-      });
-    </script>
+    let bouton = document.getElementById("toggleButton");
+    let texte = document.getElementById("texte");
 
-    <div id="button-container">
-      <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-      <button id="mooveRoom">Scanner un QR Code</button>
-      <video id="video" autoplay></video>
-      <canvas id="canvas" hidden></canvas>
-    </div>
+    bouton.addEventListener("click", function () {
+      texte.style.display = (texte.style.display === "none" || texte.style.display === "") ? "block" : "none";
+      bouton.textContent = (texte.style.display === "block") ? "Cacher votre rôle" : "Afficher votre rôle";
+    });
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
-    <script>
-      document.querySelector("#mooveRoom").addEventListener("click", () => {
-        const video = document.getElementById("video");
-        const canvas = document.getElementById("canvas");
-        const context = canvas.getContext("2d");
-        const resultText = document.getElementById("result");
+  <div id="button-container">
+    <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
+    <button id="mooveRoom">Scanner un QR Code</button>
+    <video id="video" autoplay></video>
+    <canvas id="canvas" hidden></canvas>
+    <p id="result">Scannez un QR Code...</p>
+  </div>
 
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-          .then(stream => {
-            video.srcObject = stream;
-          })
-          .catch(error => console.error("Erreur lors de l'accès à la caméra :", error));
+  <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+  <script>
+    document.querySelector("#mooveRoom").addEventListener("click", () => {
+      const video = document.getElementById("video");
+      const canvas = document.getElementById("canvas");
+      const context = canvas.getContext("2d");
+      const resultText = document.getElementById("result");
 
-        function scanQRCode() {
+      video.style.display = "block"; // Affiche la vidéo
+
+      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+        .then(stream => {
+          video.srcObject = stream;
+        })
+        .catch(error => console.error("Erreur lors de l'accès à la caméra :", error));
+
+      let interval = setInterval(() => {
+        if (video.readyState === video.HAVE_ENOUGH_DATA) {
           canvas.width = video.videoWidth;
           canvas.height = video.videoHeight;
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -73,12 +76,12 @@
 
           if (code) {
             resultText.textContent = "QR Code détecté : " + code.data;
+            clearInterval(interval); // Arrête le scanner une fois le QR code détecté
             window.location.href = code.data;
           }
         }
-
-        setInterval(scanQRCode, 500);
-      });
-    </script>
-  </body>
+      }, 500);
+    });
+  </script>
+</body>
 </html>
