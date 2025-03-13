@@ -14,70 +14,71 @@
       #texte {
         display: none;
       }
+      #video {
+        width: 300px;
+        height: 200px;
+        border: 2px solid black;
+      }
     </style>
     <script type="module">
-      const res = await fetch(
-        "https://uoneguduom.github.io/MindTraptrap/html/complice.txt"
-      );
+      const res = await fetch("https://uoneguduom.github.io/MindTraptrap/html/complice.txt");
       const complice = await res.text();
 
       const playerNb = localStorage.getItem("playerNb");
 
       if (playerNb) {
-        document.getElementById(
-          "player-title"
-        ).textContent = `Joueur ${playerNb}`;
+        document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
       }
 
-      if (+playerNb === +complice) {
-        document.getElementById("texte").textContent = "Complice";
-      } else {
-        document.getElementById("texte").textContent = "Enquêteur";
-      }
+      document.getElementById("texte").textContent = (+playerNb === +complice) ? "Complice" : "Enquêteur";
 
+      let bouton = document.getElementById("toggleButton");
+      let texte = document.getElementById("texte");
 
-      
-        let bouton = document.getElementById("toggleButton");
-        let texte = document.getElementById("texte");
-
-        bouton.addEventListener("click", function () {
-          if (texte.style.display === "none" || texte.style.display === "") {
-            texte.style.display = "block";
-            bouton.textContent = "Cacher votre rôle";
-          } else {
-            texte.style.display = "none";
-            bouton.textContent = "Afficher votre rôle";
-          }
-        });
-      
-
-   
+      bouton.addEventListener("click", function () {
+        texte.style.display = (texte.style.display === "none" || texte.style.display === "") ? "block" : "none";
+        bouton.textContent = (texte.style.display === "block") ? "Cacher votre rôle" : "Afficher votre rôle";
+      });
     </script>
+
     <div id="button-container">
       <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-      <button id="mooveRoom">Ouvrir la caméra</button>
-      <script>
-          const button = document.querySelector("#mooveRoom");
-
-          button.addEventListener("click", () => {
-              let cameraInput = document.createElement("input");
-              cameraInput.type = "file";
-              cameraInput.accept = "video/*";
-              cameraInput.capture = "environment"; // Utilise la caméra arrière
-              cameraInput.style.display = "none"; // Cache l'input
-
-              document.body.appendChild(cameraInput);
-              cameraInput.click(); // Déclenche l'ouverture de la caméra
-
-              cameraInput.onchange = function (event) {
-                  let file = event.target.files[0];
-                  if (file) {
-                      console.log("Photo capturée :", file);
-                  }
-              };
-          });
-      </script>
-
+      <button id="mooveRoom">Scanner un QR Code</button>
+      <video id="video" autoplay></video>
+      <canvas id="canvas" hidden></canvas>
+      <p id="result">Scannez un QR Code...</p>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+    <script>
+      document.querySelector("#mooveRoom").addEventListener("click", () => {
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("canvas");
+        const context = canvas.getContext("2d");
+        const resultText = document.getElementById("result");
+
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+          .then(stream => {
+            video.srcObject = stream;
+          })
+          .catch(error => console.error("Erreur lors de l'accès à la caméra :", error));
+
+        function scanQRCode() {
+          canvas.width = video.videoWidth;
+          canvas.height = video.videoHeight;
+          context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code) {
+            resultText.textContent = "QR Code détecté : " + code.data;
+            window.location.href = code.data;
+          }
+        }
+
+        setInterval(scanQRCode, 500);
+      });
+    </script>
   </body>
 </html>
