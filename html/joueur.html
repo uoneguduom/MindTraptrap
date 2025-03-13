@@ -30,7 +30,7 @@
       document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
     }
 
-    document.getElementById("texte").textContent = (+playerNb === +complice) ? "Complice" : "Enquêteur";
+    document.getElementById("texte").textContent = (+playerNb === 2) ? "Complice" : "Enquêteur";
 
     let bouton = document.getElementById("toggleButton");
     let texte = document.getElementById("texte");
