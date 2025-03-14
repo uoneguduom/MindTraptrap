@@ -1,135 +1,171 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-}
-
+@import url("https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap");
 body {
-    background-color: #121212;
-    color: #f0f0f0;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    padding: 20px;
-}
-
-
-.title {
-    font-family: "Grenze", serif;
-    font-weight: 100;
-    font-style: normal;
-    font-size: 40px;
-    /* font-weight: bold; */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    margin-bottom:50px;
-}
-
-
-.tier2-title {
-    font-family: "Montserrat Alternates", sans-serif;
-    /* font-weight: 100; */
-    font-style: normal;
-    font-size: 25px;
-    margin-bottom: 20px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-}
-
-
-.button-box {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-
-.button {
-    background-color: #333;
-    color: #f0f0f0;
-    font-size: 18px;
-    /* font-weight: bold; */
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 200px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.indice {
-    width: 90vw;
-    padding: 30px;
-    display: inline-block;
-    /* text-align: justify; */
-    height: min-content;
-}
-
-
-.button:hover {
-    background-color: #ff5733;
-    box-shadow: 0 0 10px #ff5733, 0 0 40px #ff5733;
-}
-
-#player-title {
-    font-size: 24px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
-    margin-bottom: 20px;
-}
-
-
-#button-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 30px;
+  background: #1F1A25;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
 }
 
 button {
-    font-family: "Montserrat Alternates", sans-serif;
-    /* font-weight: 100; */
-    font-style: normal;
-    background-color: #333;
-    color: #f0f0f0;
-    font-size: 14px;
-    /* font-weight: bold; */
-    padding: 12px 20px;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    width: 200px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #78E0DC;
+  box-shadow: 0 8px #2dc5bf;
 }
-
 button:hover {
-    background-color: #ff5733;
-    box-shadow: 0 0 10px #ff5733, 0 0 40px #ff5733;
+  cursor: pointer;
+}
+button:focus {
+  outline: none;
+}
+button:hover, button:focus {
+  background-color: #4fd6d1;
+}
+button:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #2dc5bf;
 }
 
-#texte {
-    display: none;
-    font-size: 18px;
-    font-weight: bold;
-    padding: 15px;
-    background-color: #222;
-    border-radius: 8px;
-    margin-top: 15px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+
+.btn-primary {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #78E0DC;
+  box-shadow: 0 8px #2dc5bf;
+}
+.btn-primary:hover {
+  cursor: pointer;
+}
+.btn-primary:focus {
+  outline: none;
+}
+.btn-primary:hover, .btn-primary:focus {
+  background-color: #4fd6d1;
+}
+.btn-primary:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #2dc5bf;
 }
 
-#button_room{
-    margin-top: 30px;
+.btn-secondary {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #B8B3E9;
+  box-shadow: 0 8px #6e64d2;
+}
+.btn-secondary:hover {
+  cursor: pointer;
+}
+.btn-secondary:focus {
+  outline: none;
+}
+.btn-secondary:hover, .btn-secondary:focus {
+  background-color: #938bde;
+}
+.btn-secondary:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #6e64d2;
+}
+
+.btn-secondary-custom {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #f09c1e;
+  box-shadow: 0 8px #c57d10;
+}
+.btn-secondary-custom:hover {
+  cursor: pointer;
+}
+.btn-secondary-custom:focus {
+  outline: none;
+}
+.btn-secondary-custom:hover, .btn-secondary-custom:focus {
+  background-color: #fcb140;
+}
+.btn-secondary-custom:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px #fcb140;
+}
+
+.btn-secondary1-custom {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #4cfd96;
+  box-shadow: 0 8px #03e04d;
+}
+
+.btn-secondary1-custom:hover, .btn-secondary1-custom:focus {
+  background-color: #7af8ae;
+}
+
+.btn-secondary2-custom {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #7a7a7a;
+  box-shadow: 0 8px rgb(87, 87, 87);
+}
+
+.btn-secondary3-custom {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  box-shadow: 0 8px rgb(207, 207, 207);
+}
+
+.btn-secondary4-custom {
+  border: 0;
+  border-radius: 5px;
+  color: #1F1A25;
+  font-family: "Muli", Arial, sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  background-color: #ffed50;
+  box-shadow: 0 8px #a39302;
 }
 
 @media (max-width: 768px) {

@@ -1,38 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MindTrap</title>
+<head>
+    <title>ETAPE 1 : JOUEUR</title>
     <script src="../js/main.js" defer></script>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Grenze:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Glitch&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <header class="top-bar">
-      <h1 class="title">MindTrap</h1>
-    </header>
-    <main>
-      <h2 class="tier2-title content">Choose your player</h2>
-      <div class="button-box content">
-        <a href="joueur.html"
-          ><button class="button" id="1">player 1</button></a
-        >
-        <a href="joueur.html"
-          ><button class="button" id="2">player 2</button></a
-        >
-        <a href="joueur.html"
-          ><button class="button" id="3">player 3</button></a
-        >
-        <a href="joueur.html"
-          ><button class="button" id="4">player 4</button></a
-        >
-      </div>
-    </main>
-  </body>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style media="screen">
+      *,
+*:before,
+*:after{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+            background-color: #080710;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-image: url('../wpp.jpg');  /* Ajouter l'image en arrière-plan */
+    background-size: cover;           /* L'image couvre toute la taille de l'écran */
+    background-position: center center; /* Centrer l'image */
+    background-attachment: fixed;     /* L'image ne se déplace pas avec le défilement */
+        }
+
+.background .shape{
+    height: 200px;
+    width: 200px;
+    position: absolute;
+    border-radius: 50%;
+}
+form {
+            height: 420px;
+            width: 500px;
+            background-color: rgb(0 0 0 / 54%);;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+form *{
+    font-family: 'Poppins',sans-serif;
+    color: #ffffff;
+    letter-spacing: 1.5px;
+    outline: none;
+    border: none;
+    text-align: center;
+}
+form h3 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 3px 3px 10px rgba(255, 165, 0, 0.8), 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
+form h4{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+a {
+    text-decoration: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="background">
+
+    </div>
+    <form>
+        <h3>MIND TRAP</h3>
+        <h4>QUEL JOUEUR ETES-VOUS ?</h4>
+    </br></br>
+        <div class="multi-button">
+            <a href="joueur.html" class="btn-primary" id="1">JOUEUR 1</a>
+            <a href="joueur.html" class="btn-secondary" id="2">JOUEUR 2</a>
+        </br></br></br>
+            <a href="joueur.html" class="btn-secondary-custom" id="3">JOUEUR 3</a>
+            <a href="joueur.html" class="btn-secondary1-custom" id="4">JOUEUR 4</a>
+        </div>
+
+    </form>    
+
+</body>
 </html>

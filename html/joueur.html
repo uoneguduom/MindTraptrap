@@ -1,87 +1,187 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <title>Afficher / Cacher votre rôle</title>
-</head>
-<body>
-  <h1 id="player-title">Joueur</h1>
-  <button id="toggleButton">Afficher votre rôle</button>
-  <div id="texte"></div>
-  <style>
-    #texte { display: none; }
-    #video {
-      width: 300px;
-      height: 200px;
-      border: 2px solid black;
-      display: none; /* Caché par défaut */
-    }
-  </style>
+    <title>ETAPE 2 : VOTRE ROLE</title>
+    <script src="../js/main.js" defer></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 
-  <script type="module">
-    const res = await fetch("https://uoneguduom.github.io/MindTraptrap/html/complice.txt");
-    const complice = await res.text();
-
-    const playerNb = localStorage.getItem("playerNb");
-
-    if (playerNb) {
-      document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
-    }
-
-    document.getElementById("texte").textContent = (+playerNb === 2) ? "Complice" : "Enquêteur";
-
-    let bouton = document.getElementById("toggleButton");
-    let texte = document.getElementById("texte");
-
-    bouton.addEventListener("click", function () {
-      texte.style.display = (texte.style.display === "none" || texte.style.display === "") ? "block" : "none";
-      bouton.textContent = (texte.style.display === "block") ? "Cacher votre rôle" : "Afficher votre rôle";
-    });
-  </script>
-
-  <div id="button-container">
-    <a href="choosePlayer.html"><button>Revenir en arrière</button></a>
-    <button id="mooveRoom">Scanner un QR Code</button>
-    <video id="video" autoplay></video>
-    <canvas id="canvas" hidden></canvas>
-    <p id="result">Scannez un QR Code...</p>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
-  <script>
-    document.querySelector("#mooveRoom").addEventListener("click", () => {
-      const video = document.getElementById("video");
-      const canvas = document.getElementById("canvas");
-      const context = canvas.getContext("2d");
-      const resultText = document.getElementById("result");
-
-      video.style.display = "block"; // Affiche la vidéo
-
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-        .then(stream => {
-          video.srcObject = stream;
-        })
-        .catch(error => console.error("Erreur lors de l'accès à la caméra :", error));
-
-      let interval = setInterval(() => {
-        if (video.readyState === video.HAVE_ENOUGH_DATA) {
-          canvas.width = video.videoWidth;
-          canvas.height = video.videoHeight;
-          context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-          const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-          const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-          if (code) {
-            resultText.textContent = "QR Code détecté : " + code.data;
-            clearInterval(interval); // Arrête le scanner une fois le QR code détecté
-            window.location.href = code.data;
-          }
+    <style>
+        *,
+        *:before,
+        *:after {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
         }
-      }, 500);
-    });
-  </script>
+
+        body {
+            background-color: #080710;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-image: url('../wpp.jpg');  /* Ajouter l'image en arrière-plan */
+    background-size: cover;           /* L'image couvre toute la taille de l'écran */
+    background-position: center center; /* Centrer l'image */
+    background-attachment: fixed;     /* L'image ne se déplace pas avec le défilement */
+        }
+
+        form {
+            height: 420px;
+            width: 500px;
+            background-color: rgb(0 0 0 / 54%);;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 40%;
+            left: 50%;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 40px rgba(8, 7, 16, 0.6);
+            padding: 50px 35px;
+        }
+
+        form * {
+            color: #ffffff;
+            letter-spacing: 1.5px;
+            outline: none;
+            border: none;
+            text-align: center;
+        }
+        form h3 {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 42px;
+    text-align: center;
+    text-transform: uppercase;
+    color: #fff;
+    text-shadow: 3px 3px 10px rgba(255, 165, 0, 0.8), 0px 0px 5px rgba(255, 255, 255, 0.5);
+}
+form h4{
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 42px;
+    text-align: center;
+}
+
+        a {
+            text-decoration: none;
+        }
+
+        #texte {
+    display: none;
+    color: yellow;
+    margin-top: 15px;
+    padding: 10px;
+    border: 2px solid #ff9800;
+    background-color: rgba(0, 0, 0, 0.7); 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
+    font-size: 18px;
+    text-align: center;
+}
+
+        .scanner-container {
+          display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 550px;
+        }
+
+        #video {
+            width: 300px;
+            height: 200px;
+            border: 2px solid black;
+            display: none; /* Caché par défaut */
+        }
+
+        #result {
+            margin-top: 10px;
+            color: white;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background"></div>
+
+    <form>
+        <h3>MIND TRAP</h3>
+        <h4>VOTRE ROLE</h4>  
+        <div id="texte"></div>
+        <br><br>
+        <div class="multi-button">
+            <a href="#" class="btn-secondary4-custom" id="toggleButton">Afficher votre rôle</a>
+            <br><br><br>
+            <a href="choosePlayer.html" class="btn-secondary2-custom">⬅️</a>
+            <a href="#" class="btn-secondary3-custom" id="mooveRoom">SCAN QR CODE</a>
+        </div>
+    </form>  
+
+    <div class="scanner-container">
+        <video id="video" autoplay></video>
+        <canvas id="canvas" hidden></canvas>
+        <p id="result">Scannez un QR Code...</p>
+    </div>
+
+    <script type="module">
+        const res = await fetch("https://uoneguduom.github.io/MindTraptrap/html/complice.txt");
+        const complice = await res.text();
+
+        const playerNb = localStorage.getItem("playerNb");
+
+        // if (playerNb) {
+        //     document.getElementById("player-title").textContent = `Joueur ${playerNb}`;
+        // }
+
+        document.getElementById("texte").textContent = (+playerNb === 2) ? "Complice" : "Enquêteur";
+
+        let bouton = document.getElementById("toggleButton");
+        let texte = document.getElementById("texte");
+
+        bouton.addEventListener("click", function () {
+            texte.style.display = (texte.style.display === "none" || texte.style.display === "") ? "block" : "none";
+            bouton.textContent = (texte.style.display === "block") ? "Cacher votre rôle" : "Afficher votre rôle";
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr"></script>
+    <script>
+        document.querySelector("#mooveRoom").addEventListener("click", () => {
+            const video = document.getElementById("video");
+            const canvas = document.getElementById("canvas");
+            const context = canvas.getContext("2d");
+            const resultText = document.getElementById("result");
+
+            video.style.display = "block"; // Affiche la vidéo
+            resultText.style.display = "block"; // Affiche le texte
+
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                .then(stream => {
+                    video.srcObject = stream;
+                })
+                .catch(error => console.error("Erreur lors de l'accès à la caméra :", error));
+
+            let interval = setInterval(() => {
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                    const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+                    const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+                    if (code) {
+                        resultText.textContent = "QR Code détecté : " + code.data;
+                        clearInterval(interval); // Arrête le scanner une fois le QR code détecté
+                        window.location.href = code.data;
+                    }
+                }
+            }, 500);
+        });
+    </script>
 </body>
 </html>
