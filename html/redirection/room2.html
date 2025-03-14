@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>room 2</title>
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/room.js" defer></script>
 </head>
 <body>
-    <div id="indice"></div>
+    <div id="indice" class="button indice"></div>
     <script>
         const playerNb = localStorage.getItem("playerNb");
         if (+playerNb === 1) {
@@ -17,10 +18,14 @@
         } else if (+playerNb === 3){
             document.getElementById("indice").textContent = "Les bougies illuminant la pièce lui donnent un air chaleureux. L’ambiance ne colle pas aux événements de la nuit.";
         }else if (+playerNb === 4){
+
             document.getElementById("indice").textContent = "Vous trouver une lettre d’amour, signée par un baiser dont la couleur vous rappelle quelque chose. Mr Rochester semblait avoir une liaison avec quelqu’un  ";
-        }
+
+            document.getElementById("indice").textContent = "Vous trouver caché dans un des tiroirs de la salle à manger une lettre d’amour, signée par un baiser dont la couleur vous rappelle quelque chose. Elle date de quelques jours. ";
+
 
 
     </script>
+    <a href="../joueur.html"><button id="button_room">Revenir en arrière</button></a>
 </body>
 </html>
