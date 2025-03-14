@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>room 9</title>
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/room.js" defer></script>
 </head>
 <body>
-    <div id="indice"></div>
+    <div id="indice" class="button indice"></div>
     <script>
         const playerNb = localStorage.getItem("playerNb");
         if (+playerNb === 1) {
@@ -15,13 +16,14 @@
         } else if (+playerNb === 2){
             document.getElementById("indice").textContent = "Les grandes baies vitrées illuminent parfaitement la pièce, c’est agréable. ";
         } else if (+playerNb === 3){
-            document.getElementById("indice").textContent = "V.Exposés derrière des plantes se trouve une photographie. Dessus ce trouve une femme de dos en train de peintre un tableau. La seule chose qui attire votre regard est la belle broche argenté que porte dans les cheveux la femme.  ";
+            document.getElementById("indice").textContent = "Exposés derrière des plantes se trouve une photographie. Dessus ce trouve une femme de dos en train de peintre un tableau. La seule chose qui attire votre regard est la belle broche argenté que porte dans les cheveux la femme.  ";
         }else if (+playerNb === 4){
             document.getElementById("indice").textContent = "Pas de lustre dans cette pièce. L'esthétique ne devait pas coller.";
         }
 
 
     </script>
+    <a href="../joueur.html"><button id="button_room">Revenir en arrière</button></a>
     
 </body>
 </html>

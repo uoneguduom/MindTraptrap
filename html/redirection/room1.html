@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>room 1</title>
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/room.js" defer></script>
     <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <div id="indice"></div>
+    <div id="indice" class="button indice"></div>
     <script>
         const playerNb = localStorage.getItem("playerNb");
         if (+playerNb === 1) {
             document.getElementById("indice").textContent = "De somptueux desserts se trouvent sur la table au milieu de la pièce. Les regarder vous donne faim. ";
         } else if (+playerNb === 2){
-            document.getElementById("indice").textContent = "R.La cuisinière vous annonce que personne n’est venu dans la cuisine cette soirée, hormis Mme la maire pour demander de nouvelles bouteilles de vin. ";
+            document.getElementById("indice").textContent = "La cuisinière vous annonce que personne n’est venu dans la cuisine cette soirée, hormis Mme la maire pour demander de nouvelles bouteilles de vin. ";
         } else if (+playerNb === 3){
             document.getElementById("indice").textContent = "La pièce vous semble bien rangée, ça change de chez vous. ";
         }else if (+playerNb === 4){
@@ -23,5 +24,6 @@
 
 
     </script>
+    <a href="../joueur.html"><button id="button_room">Revenir en arrière</button></a>
 </body>
 </html>

@@ -4,23 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>room 4</title>
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="../../js/room.js" defer></script>    
 </head>
 <body>
-    <div id="indice"></div>
+    <div id="indice" class="button indice"></div>
     <script>
         const playerNb = localStorage.getItem("playerNb");
         if (+playerNb === 1) {
-            document.getElementById("indice").textContent = ".Sur le guéridon du salon vous trouvez un magazine qui semble parler de Mademoiselle Omens. L’article décrit avec précision comment Mademoiselle s'est fait expulser d’un casino à cause d’une incapacité à payer. Les journalistes assurent que Mademoiselle Omens est addict au jeu d’argent mais ne semble pas très doué pour ses derniers. ";
+            document.getElementById("indice").textContent = "Sur le guéridon du salon vous trouvez un magazine qui semble parler de Mademoiselle Omens. L’article décrit avec précision comment Mademoiselle s'est fait expulser d’un casino à cause d’une incapacité à payer. Les journalistes assurent que Mademoiselle Omens est addict au jeu d’argent mais ne semble pas très doué pour ses derniers. ";
         } else if (+playerNb === 2){
             document.getElementById("indice").textContent = "Le canapé est plus agréable qu’il n’en a l’air… Vous devriez demander la marque.";
         } else if (+playerNb === 3){
             document.getElementById("indice").textContent = "Encore un tableau. Celui qui a décoré cette pièce a bon goût.";
         }else if (+playerNb === 4){
-            document.getElementById("indice").textContent = "J.Quelque chose attire votre regard dans la cheminée dont le feu meurt doucement. C’est un papier à moitié brûlé, signé par Mr Modis. Ça ressemble à un testament, celui de Mme Rochester plus précisément, qui stipule que Mr Rochester doit hériter de toute son entreprise si quelque chose lui arrive.";
+            document.getElementById("indice").textContent = "Quelque chose attire votre regard dans la cheminée dont le feu meurt doucement. C’est un papier à moitié brûlé, signé par Mr Modis. Ça ressemble à un testament, celui de Mme Rochester plus précisément, qui stipule que Mr Rochester doit hériter de toute son entreprise si quelque chose lui arrive.";
         }
 
 
     </script>
+    <a href="../joueur.html"><button id="button_room">Revenir en arrière</button></a>
 </body>
 </html>
