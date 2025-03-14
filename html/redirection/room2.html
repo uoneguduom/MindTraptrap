@@ -22,10 +22,79 @@
             document.getElementById("indice").textContent = "Vous trouver une lettre d’amour, signée par un baiser dont la couleur vous rappelle quelque chose. Mr Rochester semblait avoir une liaison avec quelqu’un  ";
 
             document.getElementById("indice").textContent = "Vous trouver caché dans un des tiroirs de la salle à manger une lettre d’amour, signée par un baiser dont la couleur vous rappelle quelque chose. Elle date de quelques jours. ";
-
+        }
 
 
     </script>
+    <style>
+        @import url("https://fonts.googleapis.com/css?family=Muli:400,700,800&display=swap");
+
+       
+        body {
+            background-color: #080710;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            background-image: url('../../wpp.jpg'); /* Image de fond */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        #indice {
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 20px rgba(255, 165, 0, 0.6);
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Animation sur hover */
+        #indice:hover {
+            box-shadow: 0 0 30px rgba(255, 165, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        /* Bouton Retour */
+        #button_room {
+            border: 0;
+            border-radius: 5px;
+            color: #1F1A25;
+            font-family: "Muli", Arial, sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #ffed50;
+            box-shadow: 0 8px #a39302;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        #button_room:hover {
+            background-color: #ffdf00;
+            box-shadow: 0 8px #8a7700;
+            transform: translateY(-2px);
+        }
+
+        #button_room:active {
+            transform: translateY(4px);
+            box-shadow: 0 3px #8a7700;
+        }
+
+    </style>
     <a href="../joueur.html"><button id="button_room">Revenir en arrière</button></a>
 </body>
 </html>
