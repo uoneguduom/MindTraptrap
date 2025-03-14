@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
     <style media="screen">
       *,
@@ -22,9 +24,9 @@ body {
             font-family: 'Poppins', sans-serif;
             text-align: center;
             background-image: url('../wpp.jpg');  /* Ajouter l'image en arrière-plan */
-    background-size: cover;           /* L'image couvre toute la taille de l'écran */
-    background-position: center center; /* Centrer l'image */
-    background-attachment: fixed;     /* L'image ne se déplace pas avec le défilement */
+            background-size: cover;           /* L'image couvre toute la taille de l'écran */
+            background-position: center center; /* Centrer l'image */
+            background-attachment: fixed;     /* L'image ne se déplace pas avec le défilement */
         }
 
 .background .shape{
@@ -72,6 +74,12 @@ form h4{
 }
 a {
     text-decoration: none;
+}
+@media (max-width: 768px) {
+    .button {
+        width: 80%;
+        font-size: 16px;
+    }
 }
 
     </style>
