@@ -12,6 +12,14 @@
     <script>
         const playerNb = localStorage.getItem("playerNb");
         if (+playerNb === 1) {
+
+            document.getElementById("indice").textContent = "Brisée par terre repose une horloge dont les aiguilles indiquent précisément 21h52. Le médecin légiste vous a bien dit que le corps a été retrouvé ici par un des domestiques. L’horloge a dû tomber à la mort de Mr Rochester";
+        } else if (+playerNb === 2){
+            document.getElementById("indice").textContent = "Vous remarquez que les tiroirs du bureau ont été ouverts et semble avoir été fouillé. Vous savez pourtant que seule vous avez l’autorisation pour inspecter les lieux ainsi.  ";
+        } else if (+playerNb === 3){
+            document.getElementById("indice").textContent = "Oh, une machine à écrire! Votre grand-mère en avait une chez elle.";
+        }else if (+playerNb === 4){
+
             document.getElementById("indice").textContent = "Briser par terre repose une horloge dont les aiguilles indiquent précisément 21h52. Le médecin légiste vous a bien dit que le corps a été retrouvé ici par un des domestiques. L’horloge a dû tomber à la mort de Mr Rochester";
         } else if (+playerNb === 2){
             document.getElementById("indice").textContent = "Vous remarquez que les tiroirs du bureau ont été ouverts et semble avoir été fouillé. Vous savez pourtant que seule vous avez l’autorisation pour inspecter les lieux ainsi. ";
@@ -19,7 +27,6 @@
             document.getElementById("indice").textContent = "Oh, une machine à écrire! Votre grand-mère en avait une chez elle.";
         }else if (+playerNb === 4){
             document.getElementById("indice").textContent = "Glisser sous une étagère vous remarquez un somptueux bracelet en jade. Il doit valoir une fortune. ";
-        }
 
 
     </script>
